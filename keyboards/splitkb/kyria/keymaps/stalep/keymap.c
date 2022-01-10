@@ -83,6 +83,8 @@ enum layers {
 #define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
 #define CTL_MINS MT(MOD_RCTL, KC_MINUS)
 #define ALT_ENT  MT(MOD_LALT, KC_ENT)
+#define LSFT_PO  MT(MOD_LSFT, NO_PO)
+#define RSFT_PC  MT(MOD_RSFT, NO_PC)
 
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
 // The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and
@@ -107,6 +109,34 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define TD_SCLN_OE TD(SCLN_OE)
 #define TD_QUOT_AE TD(QUOT_AE)
 
+// Initialize variable holding the binary
+// // representation of active modifiers.
+uint8_t mod_state;
+//Since we're using nordic layout, we need to intercept tap-shift
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case LSFT_T(NO_PO):
+      if (record->tap.count && record->event.pressed) {
+        if(get_mods() & MOD_MASK_CTRL) {
+          tap_code16(NO_LBRC); // Send [ on tap
+          return false;        // Return false to ignore further processing of key
+        }
+        else {
+          tap_code16(NO_PO); // Send NO_PO on tap
+          return false;        // Return false to ignore further processing of key
+        }
+      }
+      break;
+    case RSFT_T(NO_PC):
+      if (record->tap.count && record->event.pressed) {
+        tap_code16(NO_PC); // Send NO_PC on tap
+        return false;        // Return false to ignore further processing of key
+      }
+      break;
+  }
+  return true;
+}
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
@@ -117,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |Ctrl/Esc|   A  |   S  |   D  |   F  |   G  |                              |   H  |   J  |   K  |   L  | / ø  |  æ  å  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |      |CapsLk|  |      |      |   N  |   M  | ,  ; | . :  | -  _ | RShift |
+ * | LSft/( |   Z  |   X  |   C  |   V  |   B  |      |CapsLk|  |      |      |   N  |   M  | ,  ; | . :  | -  _ | RSft/) |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |Adjust| LGUI | RGUI | Space| Nav  |  | Sym  | LAlt/| AltGr| RGUI | Menu |
  *                        |      |      |      |      |      |  |      | Enter|      |      |      |
@@ -126,7 +156,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT(
      KC_TAB  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,   KC_U ,  KC_I ,   KC_O ,  KC_P ,   KC_BSPC,
      CTL_ESC , KC_A ,  KC_S   ,  KC_D  ,   KC_F ,   KC_G ,                                        KC_H,   KC_J ,  KC_K ,   KC_L ,TD_SCLN_OE,TD_QUOT_AE,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,KC_CAPS,     _______, KC_RBRC, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH,   KC_RSFT,
+     LSFT_PO , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,KC_CAPS,     _______, KC_RBRC, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH,   RSFT_PC,
                                  ADJUST, KC_LGUI, KC_RGUI, KC_SPC , NAV   ,     SYM    , ALT_ENT ,NO_RALT, KC_RGUI, KC_APP
     ),
 
@@ -138,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |        |  F5  |  F6  |  F7  |  F8  |      |                              | Left | Down | Up   |Right | VolDn| PDown  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |  F1  |  F2  |  F3  |  F4  |      |      |ScLck |  |      |      | Pause|M Prev|M Play|M Next|VolMut| PrtSc  |
+ * |        |  F1  |  F2  |  F3  |  F4  |      |      |ScLck |  |      |      | Pause|M Prev|M Play|M Next|VolMut| Home   |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
@@ -147,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NAV] = LAYOUT(
       _______,KC_F9,KC_F10,KC_F11,KC_F12,_______,                                           KC_MS_LEFT, KC_MS_DOWN, KC_MS_UP,KC_MS_RIGHT,  KC_VOLU, KC_PGUP,
       _______,KC_F5, KC_F6, KC_F7, KC_F8,_______,                                           KC_LEFT   , KC_DOWN   , KC_UP   ,KC_RGHT    ,  KC_VOLD, KC_PGDN,
-      _______,KC_F1, KC_F2, KC_F3, KC_F4,_______, _______, _______, _______,    KC_MS_BTN3, KC_PAUSE  , KC_MPRV   , KC_MPLY ,KC_MNXT    ,  KC_MUTE, KC_PSCR,
+      _______,KC_F1, KC_F2, KC_F3, KC_F4,_______, _______, _______, _______,    KC_MS_BTN3, KC_PAUSE  , KC_MPRV   , KC_MPLY ,KC_MNXT    ,  KC_MUTE, KC_HOME,
                        _______, _______, _______, _______, _______, KC_MS_BTN1,    _______, KC_MS_BTN2, _______, _______
     ),
     
@@ -261,7 +291,6 @@ bool oled_task_user(void) {
 }
 #endif
 
-/* DELETE THIS LINE TO UNCOMMENT (1/2)
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
 
@@ -283,4 +312,3 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     return false;
 }
 #endif
-DELETE THIS LINE TO UNCOMMENT (2/2) */
