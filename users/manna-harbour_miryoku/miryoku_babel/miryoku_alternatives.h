@@ -227,12 +227,19 @@ RESET,             U_NA,              U_NA,              U_NA,              U_NA
 KC_LGUI,           KC_LALT,           KC_LCTL,           KC_LSFT,           U_NA,              KC_PLUS,           KC_DLR,            KC_PERC,           KC_CIRC,           KC_COLN,           \
 U_NA,              KC_ALGR,           U_NA,              U_NA,              U_NA,              KC_PIPE,           KC_EXLM,           KC_AT,             KC_HASH,           KC_TILD,           \
 U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              KC_UNDS,           KC_LPRN,           KC_RPRN,           U_NP,              U_NP
-
+#if defined (MIRYOKU_NORDIC)
+#define MIRYOKU_ALTERNATIVES_SYM \
+NO_LCBR,           NO_AMPR,           NO_ASTR,           NO_LPRN,           NO_RCBR,           U_NA,              U_NA,              U_NA,              U_NA,              RESET,             \
+NO_COLN,           NO_DLR,            NO_PERC,           NO_CIRC,           NO_PLUS,           U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
+NO_TILD,           NO_EXLM,           NO_AT,             NO_HASH,           NO_PIPE,           U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
+U_NP,              U_NP,              NO_LPRN,           NO_RPRN,           NO_UNDS,           U_NA,              U_NA,              U_NA,              U_NP,              U_NP
+#else
 #define MIRYOKU_ALTERNATIVES_SYM \
 KC_LCBR,           KC_AMPR,           KC_ASTR,           KC_LPRN,           KC_RCBR,           U_NA,              U_NA,              U_NA,              U_NA,              RESET,             \
-KC_COLN,           KC_DLR,            KC_PERC,           KC_CIRC,           KC_PLUS,           U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
-KC_TILD,           KC_EXLM,           KC_AT,             KC_HASH,           KC_PIPE,           U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
-U_NP,              U_NP,              KC_LPRN,           KC_RPRN,           KC_UNDS,           U_NA,              U_NA,              U_NA,              U_NP,              U_NP
+    KC_COLN,           KC_DLR,            KC_PERC,           KC_CIRC,           KC_PLUS,           U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
+    KC_TILD,           KC_EXLM,           KC_AT,             KC_HASH,           KC_PIPE,           U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
+    U_NP,              U_NP,              KC_LPRN,           KC_RPRN,           KC_UNDS,           U_NA,              U_NA,              U_NA,              U_NP,              U_NP
+#endif
 
 
 #define MIRYOKU_ALTERNATIVES_FUN_FLIP \

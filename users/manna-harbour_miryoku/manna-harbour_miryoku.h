@@ -5,6 +5,8 @@
 
 #pragma once
 
+#define MIRYOKU_NORDIC
+
 #include "miryoku_babel/miryoku_layer_names.h"
 #include "miryoku_babel/miryoku_layer.h"
 
@@ -38,4 +40,55 @@
   #define U_CPY C(KC_INS)
   #define U_CUT S(KC_DEL)
   #define U_UND KC_UNDO
+#endif
+
+
+#if defined (MIRYOKU_NORDIC)
+  //Nordic
+  #define  NO_AE    KC_QUOT     //  Æ
+#define  NO_AO    KC_LBRC     //  Å
+#define  NO_BSLS  KC_EQL      //  Backslash
+#define  NO_LT    KC_NUBS     //  <
+#define  NO_MINS  KC_SLSH     //  -
+#define  NO_OE    KC_SCLN     //  Ø
+#define  NO_PIPE  KC_GRV      //  |
+#define  NO_PLUS  KC_MINS     //  +
+#define  NO_QUOT  KC_NUHS     //  '
+#define  NO_UMLA  KC_RBRC     //  ¨
+#define  NO_RALT  KC_RGUI     //  Right Alt
+//Nordic - Modifier dependant definitions
+#define  NO_EXLM  LSFT(KC_1)        //  !
+#define  NO_DQT   LSFT(KC_2)        //  "
+#define  NO_AT    RALT(KC_2)        //  @
+#define  NO_HASH  LSFT(KC_3)        //  #
+#define  NO_EUR   LSFT(KC_4)        //  €
+#define  NO_DLR   RALT(KC_4)        //  $
+#define  NO_PERC  LSFT(KC_5)        //  %
+#define  NO_AMPR  LSFT(KC_6)        //  &
+#define  NO_SLSH  LSFT(KC_7)        //  /
+#define  NO_LPRN  LSFT(KC_8)        //  (
+#define  NO_RPRN  LSFT(KC_9)        //  )
+#define  NO_EQL   LSFT(KC_0)        //  =
+#define  NO_LCBR  RALT(KC_7)        //  {
+#define  NO_LBRC  RALT(KC_8)        //  [
+#define  NO_RBRC  RALT(KC_9)        //  ]
+#define  NO_RCBR  RALT(KC_0)        //  }
+#define  NO_COLN  LSFT(KC_DOT)      //  :
+#define  NO_SCLN  LSFT(KC_COMM)     //  ;
+#define  NO_MICR  RALT(KC_M)        //  µ
+#define  NO_EURO  RALT(KC_E)        //  €
+#define  NO_SECT  LSFT(KC_GRV)      //  §
+#define  NO_GERC  RALT(KC_COMM)     //  ¸
+#define  NO_QUAR  LSFT(RALT(KC_4))  //  ¼
+//Norwegian layout - dependant on previous definitions
+#define  NO_UNDS  LSFT(NO_MINS)  //  _
+#define  NO_QUES  LSFT(NO_PLUS)  //  ?
+#define  NO_ACUT  RALT(NO_BSLS)  //  Acute
+#define  NO_GRAV  LSFT(NO_BSLS)  //  `
+#define  NO_GT    LSFT(NO_LT)    //  >
+#define  NO_HALF  RALT(NO_LT)    //  ½
+#define  NO_CIRC  LSFT(NO_UMLA)  //  ^
+#define  NO_ASTR  LSFT(NO_QUOT)  //  *
+#define  NO_TILD  RALT(NO_UMLA)  //  ~
+
 #endif
