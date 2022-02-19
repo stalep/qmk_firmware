@@ -45,17 +45,18 @@
 
 #if defined (MIRYOKU_NORDIC)
   //Nordic
-  #define  NO_AE    KC_QUOT     //  Æ
-#define  NO_AO    KC_LBRC     //  Å
-#define  NO_BSLS  KC_EQL      //  Backslash
-#define  NO_LT    KC_NUBS     //  <
-#define  NO_MINS  KC_SLSH     //  -
-#define  NO_OE    KC_SCLN     //  Ø
-#define  NO_PIPE  KC_GRV      //  |
-#define  NO_PLUS  KC_MINS     //  +
-#define  NO_QUOT  KC_NUHS     //  '
-#define  NO_UMLA  KC_RBRC     //  ¨
-#define  NO_RALT  KC_RGUI     //  Right Alt
+#define  NO_AAE    0x34        // Æ
+#define  NO_AE    KC_QUOTE     //  Æ
+#define  NO_AO    KC_LBRACKET     //  Å
+#define  NO_BSLS  KC_BSLASH      //  Backslash
+#define  NO_LT    KC_NONUS_BACKSLASH     //  <
+#define  NO_MINS  KC_SLASH     //  -
+#define  NO_OE    KC_SCOLON     //  Ø
+#define  NO_PIPE  KC_GRAVE      //  |
+#define  NO_PLUS  KC_MINUS     //  +
+#define  NO_QUOT  KC_NONUS_HASH     //  '
+#define  NO_UMLA  KC_RBRACKET     //  ¨
+#define  NO_RALT  KC_RIGHT_GUI  //  Right Alt
 //Nordic - Modifier dependant definitions
 #define  NO_EXLM  LSFT(KC_1)        //  !
 #define  NO_DQT   LSFT(KC_2)        //  "
@@ -84,11 +85,14 @@
 #define  NO_UNDS  LSFT(NO_MINS)  //  _
 #define  NO_QUES  LSFT(NO_PLUS)  //  ?
 #define  NO_ACUT  RALT(NO_BSLS)  //  Acute
-#define  NO_GRAV  LSFT(NO_BSLS)  //  `
+#define  NO_GRV   LSFT(NO_BSLS)  //  `
 #define  NO_GT    LSFT(NO_LT)    //  >
 #define  NO_HALF  RALT(NO_LT)    //  ½
 #define  NO_CIRC  LSFT(NO_UMLA)  //  ^
 #define  NO_ASTR  LSFT(NO_QUOT)  //  *
 #define  NO_TILD  RALT(NO_UMLA)  //  ~
+
+#undef KC_QUOT
+#define KC_QUOT NO_QUOT
 
 #endif

@@ -17,8 +17,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [NUM]    = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_NUM),
   [SYM]    = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_SYM),
   [FUN]    = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_FUN),
-  [BUTTON] = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_BUTTON)
+  [BUTTON] = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_BUTTON),
+  [GAME]   = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_GAME)
 };
+
+// nordic plus game layer
+const uint16_t PROGMEM io_combo[] = {LALT_T(KC_I),LGUI_T(KC_O), COMBO_END};
+const uint16_t PROGMEM ei_combo[] = {LCTL_T(KC_E),LALT_T(KC_I),COMBO_END};
+const uint16_t PROGMEM ne_combo[] = {LSFT_T(KC_N),LCTL_T(KC_E),COMBO_END};
+const uint16_t PROGMEM dotdash_combo[] = {ALGR_T(KC_DOT),LT(BUTTON, KC_SLSH),COMBO_END};
+const uint16_t PROGMEM uy_combo[] = {KC_U, KC_Y, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+  COMBO(io_combo, NO_AO),
+  COMBO(ei_combo, NO_AE),
+  COMBO(ne_combo, NO_OE),
+  COMBO(dotdash_combo, NO_SLSH)
+  //COMBO(uy_combo, MO(GAME))
+};
+
 
 #if defined (MIRYOKU_KLUDGE_THUMBCOMBOS)
 const uint16_t PROGMEM thumbcombos_base_right[] = {LT(SYM, KC_ENT), LT(NUM, KC_BSPC), COMBO_END};
@@ -45,6 +61,6 @@ combo_t key_combos[COMBO_COUNT] = {
   #else
   COMBO(thumbcombos_sym, KC_LPRN),
   #endif
-  COMBO(thumbcombos_fun, KC_APP)
+  COMBO(thumbcombos_fun, KC_APP),
 };
 #endif

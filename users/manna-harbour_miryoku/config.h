@@ -39,5 +39,7 @@
   #define EXTRA_SHORT_COMBOS
 #endif
 
+#define COMBO_COUNT 4
+
 #include "custom_config.h"
 
