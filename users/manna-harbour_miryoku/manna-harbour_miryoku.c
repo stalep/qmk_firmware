@@ -27,11 +27,17 @@ const uint16_t PROGMEM ei_combo[] = {LCTL_T(KC_E),LALT_T(KC_I),COMBO_END};
 const uint16_t PROGMEM ne_combo[] = {LSFT_T(KC_N),LCTL_T(KC_E),COMBO_END};
 const uint16_t PROGMEM dotdash_combo[] = {ALGR_T(KC_DOT),LT(BUTTON, KC_SLSH),COMBO_END};
 const uint16_t PROGMEM uy_combo[] = {KC_U, KC_Y, COMBO_END};
+const uint16_t PROGMEM st_combo[] = {KC_S, KC_T, COMBO_END};
+const uint16_t PROGMEM st2_combo[] = {LSFT_T(KC_T),LCTL_T(KC_S),COMBO_END};
+const uint16_t PROGMEM commadot_combo[] = {KC_COMM, ALGR_T(KC_DOT),COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(io_combo, NO_AO),
   COMBO(ei_combo, NO_AE),
   COMBO(ne_combo, NO_OE),
-  COMBO(dotdash_combo, NO_SLSH)
+  COMBO(dotdash_combo, NO_SLSH),
+  COMBO(st_combo, KC_TAB),
+  COMBO(st2_combo, KC_TAB),
+  COMBO(commadot_combo, NO_QUES)
   //COMBO(uy_combo, MO(GAME))
 };
 

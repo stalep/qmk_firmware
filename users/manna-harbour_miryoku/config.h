@@ -7,7 +7,7 @@
 
 // default but used in macros
 #undef TAPPING_TERM
-#define TAPPING_TERM 200
+#define TAPPING_TERM 250
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
@@ -39,7 +39,7 @@
   #define EXTRA_SHORT_COMBOS
 #endif
 
-#define COMBO_COUNT 4
+#define COMBO_COUNT 7
 
 #include "custom_config.h"
 
