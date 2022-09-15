@@ -48,8 +48,8 @@
 #define  NO_AAE    0x34        // Æ
 #define  NO_AE    KC_QUOTE     //  Æ
 #define  NO_AO    KC_LBRACKET     //  Å
-#define  NO_BSLS  KC_BSLASH      //  Backslash
-#define  NO_LT    KC_NONUS_BACKSLASH     //  <
+#define NO_BSLS   KC_EQL
+#define  NO_LT    KC_NUBS        //  <
 #define  NO_MINS  KC_SLASH     //  -
 #define  NO_OE    KC_SCOLON     //  Ø
 #define  NO_PIPE  KC_GRAVE      //  |

@@ -77,7 +77,7 @@ U_NP,              U_NP,              LT(MEDIA, KC_ESC), LT(NAV, KC_SPC),   LT(M
 KC_Q,              KC_W,              KC_F,              KC_P,              KC_B,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,           \
 LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),      KC_G,              KC_M,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),      \
 LT(BUTTON, KC_Z),  ALGR_T(KC_X),      KC_C,              KC_D,              KC_V,              KC_K,              KC_H,              KC_COMM,           ALGR_T(KC_DOT),    LT(BUTTON, KC_SLSH), \
-U_NP,              U_NP,              LT(MEDIA, KC_ESC), LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB), LT(SYM, KC_BSPC),   LT(NUM, KC_ENT),  DF(GAME),          U_NP,              U_NP
+U_NP,              U_NP,              LT(MEDIA, KC_ESC), LT(MOUSE, KC_TAB), LT(NAV, KC_SPC),   LT(NUM, KC_ENT),   LT(SYM, KC_BSPC),  DF(GAME),          U_NP,              U_NP
 
 #define MIRYOKU_ALTERNATIVES_BASE_COLEMAKDHK \
 KC_Q,              KC_W,              KC_F,              KC_P,              KC_B,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,           \
@@ -219,7 +219,7 @@ U_NP,              U_NP,              U_NA,              U_NA,              U_NA
 #define MIRYOKU_ALTERNATIVES_NUM \
 NO_LBRC,           KC_7,              KC_8,              KC_9,              NO_RBRC,           U_NA,              U_NA,              U_NA,              U_NA,              RESET,             \
 NO_SCLN,           KC_4,              KC_5,              KC_6,              NO_EQL,            U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
-NO_GRV,            KC_1,              KC_2,              KC_3,              NO_BSLS,           U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
+NO_LT,             KC_1,              KC_2,              KC_3,              NO_GT,             U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
 U_NP,              U_NP,              KC_DOT,            KC_0,              NO_MINS,           U_NA,              U_NA,              U_NA,              U_NP,              U_NP
 #else
 #define MIRYOKU_ALTERNATIVES_NUM \
@@ -237,9 +237,9 @@ U_NP,              U_NP,              U_NA,              U_NA,              U_NA
 #if defined (MIRYOKU_NORDIC)
 #define MIRYOKU_ALTERNATIVES_SYM \
 NO_LCBR,           NO_AMPR,           NO_ASTR,           NO_LPRN,           NO_RCBR,           U_NA,              U_NA,              U_NA,              U_NA,              RESET,             \
-NO_COLN,           NO_DLR,            NO_PERC,           NO_CIRC,           NO_PLUS,           U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
+KC_EQL,           NO_DLR,            NO_PERC,           NO_CIRC,           NO_PLUS,           U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
 NO_TILD,           NO_EXLM,           NO_AT,             NO_HASH,           NO_PIPE,           U_NA,              U_NA,              NO_OE,             NO_AE,             NO_AO,             \
-U_NP,              U_NP,              NO_LPRN,           NO_RPRN,           NO_UNDS,           U_NA,              U_NA,              U_NA,              U_NP,              U_NP
+U_NP,              U_NP,              NO_LPRN,           NO_RPRN,           NO_DQT,            U_NA,              U_NA,              U_NA,              U_NP,              U_NP
 #else
 #define MIRYOKU_ALTERNATIVES_SYM \
 KC_LCBR,           KC_AMPR,           KC_ASTR,           KC_LPRN,           KC_RCBR,           U_NA,              U_NA,              U_NA,              U_NA,              RESET,             \
@@ -270,8 +270,8 @@ U_NP,              U_NP,              KC_BTN2,           KC_BTN3,           KC_B
 
 #define MIRYOKU_ALTERNATIVES_GAME \
 KC_Q,              KC_W,              KC_F,              KC_P,              KC_B,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,           \
-KC_A,              KC_R,              KC_S,              KC_T,              KC_G,              KC_M,              SFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),      \
+KC_A,              KC_R,              KC_S,              KC_T,              KC_G,              KC_M,              SFT_T(KC_N),       LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),      \
 KC_Z,              KC_X,              KC_C,              KC_D,              KC_V,              KC_K,              KC_H,              KC_COMM,           ALGR_T(KC_DOT),    LT(BUTTON, KC_SLSH), \
-U_NP,              U_NP,              LCTL_T(KC_ESC),    KC_SPC,            LSFT_T(KC_TAB), LT(SYM, KC_BSPC),   LT(NUM, KC_ENT),  DF(BASE),   U_NP,              U_NP
+U_NP,              U_NP,              LCTL_T(KC_ESC),    KC_LSFT,           KC_SPC,            LT(NUM, KC_ENT),   LT(SYM, KC_BSPC),  DF(BASE),          U_NP,              U_NP
 
 
